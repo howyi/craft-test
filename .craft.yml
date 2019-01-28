@@ -1,3 +1,5 @@
+targets:
+  - name: github
 github:
   owner: howyi
   repo: craft-test
