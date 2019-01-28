@@ -1,0 +1,23 @@
+dist: trusty
+
+language: php
+php:
+- 7.1
+
+before_script:
+- composer install
+
+script:
+- cp .env.example .env
+- ./artisan key:generate
+- vendor/bin/phpunit --verbose --coverage-clover=build/logs/clover.xml
+
+notifications:
+  webhooks:
+    urls:
+    - https://zeus.ci/hooks/8b8aeace-22b9-11e9-99d5-0a580a280e06/public/provider/travis/webhook
+    on_success: always
+    on_failure: always
+    on_start: always
+    on_cancel: always
+    on_error: always
